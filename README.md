@@ -40,8 +40,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Download this project
 ```
-$ git clone https://github.com/MelissaData/ReverseGeoCoder-Python3
-$ cd ReverseGeoCoder-Python3
+git clone https://github.com/MelissaData/ReverseGeoCoder-Python3
+cd ReverseGeoCoder-Python3
 ```
 
 ## Windows
@@ -83,15 +83,15 @@ There are two modes:
 
 	The script will prompt the user for input(s), then use the provided input(s) to call the Cloud API. For example:
 	```
-	$ .\ReverseGeoCoderPython3.ps1
+	.\ReverseGeoCoderPython3.ps1
 	```
 
 - Command Line 
 
 	You can pass a latitude, longitude, number of records, and license string into `-lat`, `-long`, `-max`, and `-license` parameters respectively to test the Cloud API. For example: 
 	```
-    $ .\ReverseGeoCoderPython3.ps1 -lat "33.637520" -long "-117.606920" -max "3"
-    $ .\ReverseGeoCoderPython3.ps1 -lat "33.637520" -long "-117.606920" -max "3" -license "<your_license_string>"
+    .\ReverseGeoCoderPython3.ps1 -lat "33.637520" -long "-117.606920" -max "3"
+    .\ReverseGeoCoderPython3.ps1 -lat "33.637520" -long "-117.606920" -max "3" -license "<your_license_string>"
     ```
 	
 This is the expected output from a successful setup for interactive mode:
@@ -144,15 +144,15 @@ There are two modes:
 
 	The script will prompt the user for input(s), then use the provided input(s) to call the Cloud API. For example:
 	```
-	$ ./ReverseGeoCoderPython3.sh
+	./ReverseGeoCoderPython3.sh
 	```
 
 - Command Line 
 
 	You can pass a latitude, longitude, number of records, and license string into `--lat`, `--long`, `--max`, and `--license` parameters respectively to test the Cloud API. For example: 
 	```
-    $ ./ReverseGeoCoderPython3.sh --lat "33.637520" --long "-117.606920" --max "3"
-    $ ./ReverseGeoCoderPython3.sh --lat "33.637520" --long "-117.606920" --max "3" --license "<your_license_string>"
+    ./ReverseGeoCoderPython3.sh --lat "33.637520" --long "-117.606920" --max "3"
+    ./ReverseGeoCoderPython3.sh --lat "33.637520" --long "-117.606920" --max "3" --license "<your_license_string>"
     ```
 
 This is the expected output from a successful setup for interactive mode:
