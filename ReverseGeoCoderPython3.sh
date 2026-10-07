@@ -1,7 +1,29 @@
 #!/bin/bash
 
-# Name:    ReverseGeoCoderCloudAPI
-# Purpose: Execute the ReverseGeoCoderCloudAPI program
+# Runs the Melissa Reverse GeoCoder Cloud API Python 3 sample.
+#
+# This script runs ReverseGeoCoderPython3.py with python3, passing along the license
+# and (if supplied) the lookup fields.
+#
+# Overall flow:
+#   1. Parse the command-line options below.
+#   2. Resolve the license (--license, then a prompt, then the MD_LICENSE environment variable).
+#   3. Run ReverseGeoCoderPython3.py: with the lookup fields if any was supplied,
+#      otherwise with only the license (the Python program prompts for each field).
+#
+# Options (each takes a value):
+#   --lat       Latitude to test.
+#   --long      Longitude to test.
+#   --max       Maximum number of records to return (up to 100).
+#   --license   License string. If omitted, the script prompts for it; if the prompt
+#               is left blank, it falls back to MD_LICENSE. Running without --license
+#               always prompts, even when MD_LICENSE is set.
+#
+# ReverseGeoCoderPython3.py is found relative to the current directory, so run the script from its own folder.
+#
+# Examples:
+#   ./ReverseGeoCoderPython3.sh --license "your-license"
+#   ./ReverseGeoCoderPython3.sh --lat "33.637520" --long "-117.606920" --max "3" --license "your-license"
 
 ######################### Constants ##########################
 
@@ -15,6 +37,9 @@ long=""
 max=""
 license=""
 
+# Read each --flag and its value. A flag with no value, or whose value looks like an
+# option name (e.g. --lat or -x), is an error; other values starting with "-" (such as
+# negative coordinates) are accepted. Unrecognized options are ignored.
 while [ $# -gt 0 ] ; do
   case $1 in
     --lat)
@@ -80,10 +105,13 @@ then
 fi
 
 # Run project
-if [ -z "$lat" ] && [ -z "$long" ];
+# No lookup fields (including --max) supplied -> run with only the license (the program
+# prompts); otherwise pass all of them through. Unsupplied fields arrive as empty strings
+# and the program prompts for them.
+if [ -z "$lat" ] && [ -z "$long" ] && [ -z "$max" ];
 then
-    python3 ReverseGeoCoderPython3.py --license $license 
+    python3 ReverseGeoCoderPython3.py --license "$license"
 else
-    python3 ReverseGeoCoderPython3.py --license $license --lat "$lat" --long "$long" --max "$max"
+    python3 ReverseGeoCoderPython3.py --license "$license" --lat "$lat" --long "$long" --max "$max"
 fi
 
